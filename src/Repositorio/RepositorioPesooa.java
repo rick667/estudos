@@ -25,22 +25,36 @@ public class RepositorioPesooa implements IRepositorioPessoa{
         } catch (Exception e) {
             return false;
         }
-        return false;
+        return true;
     }
 
     @Override
     public boolean deletePessoaPorId(Long id) {
+
+        for (Pessoa pessoa : listaPessoas){
+            if(pessoa.getId() == id ){
+                listaPessoas.remove(pessoa);
+                
+            }
+        }
         return false;
     }
 
     @Override
-    public List<Pessoa> listarPessoa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Pessoa> listarPessoa() {        
+        return listaPessoas ;
     }
 
     @Override
     public boolean alterarPessoa(Pessoa pessoa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        for (Pessoa pessoa1 : listaPessoas){
+            if(pessoa1.getId() == pessoa.getId() ){
+                listaPessoas.remove(pessoa1);
+                listaPessoas.add(pessoa);
+                
+            }
+        }
+        return false;
     }
-    
 }
